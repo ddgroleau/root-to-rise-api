@@ -22,6 +22,6 @@ public class ProductController {
 
     @GetMapping("/all")
     public Iterable<ProductDto> getAllProducts() {
-        return new ArrayList<ProductDto>();
+        return (Iterable<ProductDto>) productService.handleQuery(null);
     }
 }
