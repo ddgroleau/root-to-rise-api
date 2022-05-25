@@ -1,8 +1,4 @@
-package com.rtr.api.web.service.abstraction;
-
-import com.rtr.api.application.domain.model.Product;
-
-import java.util.Optional;
+package com.rtr.api.api.service.abstraction;
 
 public interface ServiceBase<T> {
     public Object handleQuery(Object request);

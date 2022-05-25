@@ -39,6 +39,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>root-to-rise-api</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

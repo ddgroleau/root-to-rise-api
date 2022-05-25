@@ -2,8 +2,8 @@ HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
-*application.*.properties
-*application.properties
+*application*.properties
+*application-*.properties
 !**/src/test/**/target/
 
 ### STS ###
