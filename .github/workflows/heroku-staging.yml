@@ -11,12 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Run mvn clean install
-      uses: actions/setup-java@v1
-          with:
-            java-version: '18'
-        run: mvn install -e -DskipTests
 
       - name: Login to Heroku Container registry
         env: 
