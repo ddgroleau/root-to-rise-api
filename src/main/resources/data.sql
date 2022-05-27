@@ -1,4 +1,4 @@
-INSERT INTO root_to_rise.public.products(
+INSERT INTO public.products(
     name,
     description,
     disclaimer,
