@@ -1,14 +1,16 @@
 package com.rtr.api.application.service.implementation;
 
+import com.rtr.api.application.domain.model.Product;
 import com.rtr.api.application.dto.ProductDto;
 import com.rtr.api.application.repository.abstraction.ProductRepository;
 import com.rtr.api.api.service.abstraction.ServiceBase;
-import org.springframework.stereotype.Component;
-
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-@Component
+@Service
+@Qualifier("product")
 public class ProductService implements ServiceBase {
 
     private final ProductRepository productRepository;
@@ -27,6 +29,7 @@ public class ProductService implements ServiceBase {
     }
 
     private Iterable<ProductDto> getAllProductsQuery() {
+        Iterable<Product> products = productRepository.findAll();
         return new ArrayList<ProductDto>();
     }
 

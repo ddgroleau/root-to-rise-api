@@ -10,10 +10,9 @@ services:
       - pgadmin
     environment:
       - SPRING_PROFILES_ACTIVE=dev-docker
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/root_to_rise
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
   postgresql:
         container_name: postgres
         image: postgres
