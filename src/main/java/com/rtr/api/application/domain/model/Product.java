@@ -1,13 +1,21 @@
 package com.rtr.api.application.domain.model;
 
 import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name="products")
 public class Product {
+    @OneToMany(mappedBy = "product")
+    private Set<Ingredient> ingredients;
+
+    @OneToMany(mappedBy = "product")
+    private Set<Property> properties;
+
+    @OneToMany(mappedBy = "product")
+    private Set<Trait> traits;
     @Id
     @GeneratedValue
     @Column(name="product_id")
@@ -31,9 +39,6 @@ public class Product {
 
     @Column(name="measurement_unit")
     private String measurementUnit;
-
-    @Column(name="ingredients")
-    private String ingredients;
 
     @Column(name="use_cases")
     private String useCases;
@@ -101,11 +106,11 @@ public class Product {
         this.measurementUnit = measurementUnit;
     }
 
-    public String getIngredients() {
+    public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
+    public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -187,5 +192,21 @@ public class Product {
 
     public void setMeasurementSize(Integer measurementSize) {
         this.measurementSize = measurementSize;
+    }
+
+    public Set<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Set<Property> properties) {
+        this.properties = properties;
+    }
+
+    public Set<Trait> getTraits() {
+        return traits;
+    }
+
+    public void setTraits(Set<Trait> traits) {
+        this.traits = traits;
     }
 }

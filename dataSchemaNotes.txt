@@ -1,0 +1,58 @@
+DATA:
+
+--INSERT INTO public.products(
+--    name,
+--    description,
+--    disclaimer,
+--    image_path,
+--    ingredients,
+--    instructions,
+--    measurement_size,
+--    measurement_unit,
+--    price,
+--    stock_quantity,
+--    use_cases,
+--    created_by,
+--    created_on,
+--    updated_by,
+--    updated_on
+--)
+--VALUES
+--('Ground Down Tincture', 'Our Ground Down tincture was designed with your stress in mind. During those moments of feeling wound up, overworked, anxious, or burnt out, our blend was designed to help ground you back down to Mother Earth. Ground Down includes a blend of nervines such as skullcap, oatstraw, and lavender, mixed with powerful adapogens like ashwagandha and tulsi. Together, these herbs can help you feel unstuck, calm your nerves and settle you back.', 'Do not consume if you are pregnant, have celiac disease or gluten-free, or taking any sedative medications. *These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any diseases.', 'ground-down.jpg', 'Take dropper-full as needed up to 3 times per day. Add directly onto or under your tongue, into your tea or coffee, in your smoothie or juice whenever you''re feeling anxious or stressed. We honor that you know your body and needs, please follow a dosage or routine that resonates best for you.', 1, 'OZ', 19, 15, 'May help to uplift mood & energy, and relieve exhaustion. May help with relieve feelings of anxiety and stress. May aid in overcoming chronic stress. May ground and bring you into bodily presence', 'API', CURRENT_DATE, 'API', CURRENT_DATE),
+--('Tummy Tamer Tincture', '', '', 'tummy-tamer.jpg', 'Take dropper-full as needed after a meal or before bed. Add directly onto or under your tongue, into your tea or coffee, in your smoothie or juice whenever your digestive system needs a little assist. We honor that you know your body and needs, please follow a dosage or routine that resonates best for you.', 10, 'OZ', 19, 15, '', 'API', CURRENT_DATE, 'API', CURRENT_DATE),
+--('Dream Land Tincture', '', '', 'dream-land.jpg', '', 10, 'OZ', 19, 6, '', 'API', CURRENT_DATE, 'API', CURRENT_DATE),
+--('Breathe Easy Tincture', '', '', 'breathe-easy.jpg', '', 10, 'OZ', 19, 9, '', 'API', CURRENT_DATE, 'API', CURRENT_DATE),
+--('Spring Snease Tincture', '', '', 'spring-snease.jpg',  '', 10, 'OZ', 19, 15, '', 'API', CURRENT_DATE, 'API', CURRENT_DATE),
+--('Head Aid Tincture', '', '', 'head-aid.jpg', '', 10, 'OZ', 19, 11, '', 'API', CURRENT_DATE, 'API', CURRENT_DATE),
+--('Dandy Bitters', '', '', 'dandy-bitters.jpg', '', 10, 'OZ', 17.50, 2, '', 'API', CURRENT_DATE, 'API', CURRENT_DATE);
+
+-- SCHEMA
+
+---- Table: public.products
+--
+--DROP TABLE IF EXISTS public.products;
+--
+--CREATE TABLE IF NOT EXISTS public.products
+--(
+--    product_id SERIAL,
+--    name character varying(90) COLLATE pg_catalog."default",
+--    measurement_size integer,
+--    measurement_unit character varying(90) COLLATE pg_catalog."default",
+--    stock_quantity integer,
+--    price double precision,
+--    description character varying(1000) COLLATE pg_catalog."default",
+--    disclaimer character varying(2000) COLLATE pg_catalog."default",
+--    image_path character varying(90) COLLATE pg_catalog."default",
+--    instructions character varying(2000) COLLATE pg_catalog."default",
+--    use_cases character varying(2000) COLLATE pg_catalog."default",
+--    created_by character varying(90) COLLATE pg_catalog."default",
+--    created_on timestamp without time zone,
+--    updated_by character varying(90) COLLATE pg_catalog."default",
+--    updated_on timestamp without time zone,
+--    CONSTRAINT products_pkey PRIMARY KEY (product_id)
+--);
+--
+--TABLESPACE pg_default;
+--
+----ALTER TABLE IF EXISTS public.products
+----    OWNER to root;
