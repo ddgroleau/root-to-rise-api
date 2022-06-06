@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS public.products
 (
-    product_id serial,
+    product_id bigserial,
     name character varying(255) COLLATE pg_catalog."default",
     type character varying(255) COLLATE pg_catalog."default",
     value_proposition character varying(255) COLLATE pg_catalog."default",
@@ -35,7 +35,7 @@ TABLESPACE pg_default;
 
 CREATE TABLE IF NOT EXISTS public.ingredients
 (
-    ingredient_id serial,
+    ingredient_id bigserial,
     product_id integer NOT NULL,
     name character varying(255) COLLATE pg_catalog."default",
     alternate_name character varying(255) COLLATE pg_catalog."default",
@@ -65,7 +65,7 @@ TABLESPACE pg_default;
 
 CREATE TABLE IF NOT EXISTS public.properties
 (
-    property_id serial,
+    property_id bigserial,
     product_id integer NOT NULL,
     name character varying(255) COLLATE pg_catalog."default",
     description character varying(255) COLLATE pg_catalog."default",
@@ -91,7 +91,7 @@ TABLESPACE pg_default;
 
 CREATE TABLE IF NOT EXISTS public.traits
 (
-    trait_id serial,
+    trait_id bigserial,
     product_id integer NOT NULL,
     name character varying(255) COLLATE pg_catalog."default",
     description character varying(255) COLLATE pg_catalog."default",
