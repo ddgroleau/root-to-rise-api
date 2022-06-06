@@ -1,10 +1,16 @@
 -- Table: public.products
 
 -- DROP TABLE IF EXISTS public.products;
+CREATE SEQUENCE product_id_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;`
 
 CREATE TABLE IF NOT EXISTS public.products
 (
-    product_id bigserial,
+    product_id bigint NOT NULL UNIQUE DEFAULT nextval('product_id_seq'),
     name character varying(255) COLLATE pg_catalog."default",
     type character varying(255) COLLATE pg_catalog."default",
     value_proposition character varying(255) COLLATE pg_catalog."default",
