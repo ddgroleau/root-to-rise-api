@@ -1,6 +1,6 @@
 -- Table: public.products
 
-DROP TABLE IF EXISTS public.products CASCADE;
+--DROP TABLE IF EXISTS public.products;
 
 CREATE TABLE IF NOT EXISTS public.products
 (
