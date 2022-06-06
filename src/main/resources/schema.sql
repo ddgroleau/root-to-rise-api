@@ -1,16 +1,10 @@
 -- Table: public.products
 
 -- DROP TABLE IF EXISTS public.products;
-CREATE SEQUENCE IF NOT EXISTS product_id_seq
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
 
 CREATE TABLE IF NOT EXISTS public.products
 (
-    product_id bigint NOT NULL UNIQUE DEFAULT nextval('product_id_seq'),
+    product_id serial,
     name character varying(255) COLLATE pg_catalog."default",
     type character varying(255) COLLATE pg_catalog."default",
     value_proposition character varying(255) COLLATE pg_catalog."default",
@@ -41,7 +35,7 @@ TABLESPACE pg_default;
 
 CREATE TABLE IF NOT EXISTS public.ingredients
 (
-    ingredient_id bigserial,
+    ingredient_id serial,
     product_id integer NOT NULL,
     name character varying(255) COLLATE pg_catalog."default",
     alternate_name character varying(255) COLLATE pg_catalog."default",
@@ -71,7 +65,7 @@ TABLESPACE pg_default;
 
 CREATE TABLE IF NOT EXISTS public.properties
 (
-    property_id bigserial,
+    property_id serial,
     product_id integer NOT NULL,
     name character varying(255) COLLATE pg_catalog."default",
     description character varying(255) COLLATE pg_catalog."default",
@@ -97,7 +91,7 @@ TABLESPACE pg_default;
 
 CREATE TABLE IF NOT EXISTS public.traits
 (
-    trait_id bigserial,
+    trait_id serial,
     product_id integer NOT NULL,
     name character varying(255) COLLATE pg_catalog."default",
     description character varying(255) COLLATE pg_catalog."default",
