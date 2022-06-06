@@ -1,7 +1,7 @@
 -- Table: public.products
 
 -- DROP TABLE IF EXISTS public.products;
-CREATE SEQUENCE product_id_seq
+CREATE SEQUENCE IF NOT EXISTS product_id_seq
   INCREMENT 1
   MINVALUE 1
   MAXVALUE 9223372036854775807
