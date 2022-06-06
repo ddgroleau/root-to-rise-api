@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 @Table(name="properties")
 public class Property {
     @ManyToOne
-    @JoinTable(name="products")
     @JoinColumn(name="product_id", nullable=false)
     private Product product;
 

@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="ingredients")
 public class Ingredient {
-
     @ManyToOne
     @JoinColumn(name="product_id", nullable=false)
     private Product product;
@@ -20,6 +19,15 @@ public class Ingredient {
     @NotNull
     @Column(name="name")
     private String name;
+
+    @Column(name="type")
+    private String type;
+
+    @Column(name="alternate_name")
+    private String alternateName;
+
+    @Column(name="display_order")
+    private Integer displayOrder;
 
     @Column(name="description")
     private String description;
@@ -103,5 +111,29 @@ public class Ingredient {
 
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public String getAlternateName() {
+        return alternateName;
+    }
+
+    public void setAlternateName(String alternateName) {
+        this.alternateName = alternateName;
+    }
+
+    public Integer getDisplayOrder() {
+        return displayOrder;
+    }
+
+    public void setDisplayOrder(Integer displayOrder) {
+        this.displayOrder = displayOrder;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

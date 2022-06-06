@@ -8,14 +8,6 @@ import java.util.Set;
 @Entity
 @Table(name="products")
 public class Product {
-    @OneToMany(mappedBy = "product")
-    private Set<Ingredient> ingredients;
-
-    @OneToMany(mappedBy = "product")
-    private Set<Property> properties;
-
-    @OneToMany(mappedBy = "product")
-    private Set<Trait> traits;
     @Id
     @GeneratedValue
     @Column(name="product_id")
@@ -24,6 +16,12 @@ public class Product {
     @NotNull
     @Column(name="name")
     private String name;
+
+    @Column(name="type")
+    private String type;
+
+    @Column(name="value_proposition")
+    private String valueProposition;
 
     @Column(name="description")
     private String description;
@@ -35,7 +33,7 @@ public class Product {
     private Integer stockQuantity;
 
     @Column(name="measurement_size")
-    private Integer measurementSize;
+    private Double measurementSize;
 
     @Column(name="measurement_unit")
     private String measurementUnit;
@@ -65,6 +63,15 @@ public class Product {
 
     @Column(name="updated_by")
     private String updatedBy;
+
+    @OneToMany(mappedBy = "product")
+    private Set<Ingredient> ingredients;
+
+    @OneToMany(mappedBy = "product")
+    private Set<Property> properties;
+
+    @OneToMany(mappedBy = "product")
+    private Set<Trait> traits;
 
     public Integer getProductId() {
         return productId;
@@ -186,11 +193,11 @@ public class Product {
         this.updatedBy = updatedBy;
     }
 
-    public Integer getMeasurementSize() {
+    public Double getMeasurementSize() {
         return measurementSize;
     }
 
-    public void setMeasurementSize(Integer measurementSize) {
+    public void setMeasurementSize(Double measurementSize) {
         this.measurementSize = measurementSize;
     }
 
@@ -208,5 +215,21 @@ public class Product {
 
     public void setTraits(Set<Trait> traits) {
         this.traits = traits;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getValueProposition() {
+        return valueProposition;
+    }
+
+    public void setValueProposition(String valueProposition) {
+        this.valueProposition = valueProposition;
     }
 }

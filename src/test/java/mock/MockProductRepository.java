@@ -1,6 +1,9 @@
 package mock;
 
+import com.rtr.api.application.domain.model.Ingredient;
 import com.rtr.api.application.domain.model.Product;
+import com.rtr.api.application.domain.model.Property;
+import com.rtr.api.application.domain.model.Trait;
 import com.rtr.api.application.repository.abstraction.ProductRepository;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -8,14 +11,39 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class MockRepository implements ProductRepository {
+public class MockProductRepository implements ProductRepository {
+
+    private Product instantiateMockProduct() {
+        Ingredient mockIngredient = new Ingredient() {{
+            setName("Test Ingredient");
+        }};
+        Trait mockTrait = new Trait() {{
+            setName("Test Trait");
+        }};
+        Property mockProperty = new Property() {{
+            setName("Test Property");
+        }};
+        return new Product() {{
+            setIngredients(Stream.of(mockIngredient).collect(Collectors.toSet()));
+            setTraits(Stream.of(mockTrait).collect(Collectors.toSet()));
+            setProperties(Stream.of(mockProperty).collect(Collectors.toSet()));
+            setName("Test Product");
+        }};
+    }
     @Override
     public List<Product> findAll() {
-        return null;
+        return new ArrayList<Product>(){
+            {
+                add(instantiateMockProduct());
+            }
+        };
     }
 
     @Override
