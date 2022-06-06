@@ -1,6 +1,6 @@
 -- Table: public.products
 
-DROP TABLE IF EXISTS public.products;
+DROP TABLE IF EXISTS public.products CASCADE;
 
 CREATE TABLE IF NOT EXISTS public.products
 (
@@ -31,7 +31,7 @@ TABLESPACE pg_default;
 
 -- Table: public.ingredients
 
-DROP TABLE IF EXISTS public.ingredients;
+-- DROP TABLE IF EXISTS public.ingredients;
 
 CREATE TABLE IF NOT EXISTS public.ingredients
 (
@@ -61,7 +61,7 @@ TABLESPACE pg_default;
 
 -- Table: public.properties
 
-DROP TABLE IF EXISTS public.properties;
+-- DROP TABLE IF EXISTS public.properties;
 
 CREATE TABLE IF NOT EXISTS public.properties
 (
@@ -87,7 +87,7 @@ TABLESPACE pg_default;
 
 -- Table: public.traits
 
-DROP TABLE IF EXISTS public.traits;
+-- DROP TABLE IF EXISTS public.traits;
 
 CREATE TABLE IF NOT EXISTS public.traits
 (
