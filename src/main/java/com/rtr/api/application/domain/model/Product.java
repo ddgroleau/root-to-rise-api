@@ -2,6 +2,7 @@ package com.rtr.api.application.domain.model;
 
 import com.sun.istack.NotNull;
 import javax.persistence.*;
+import java.security.InvalidParameterException;
 import java.time.LocalDateTime;
 import java.util.Set;
 
