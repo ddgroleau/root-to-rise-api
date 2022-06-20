@@ -1,4 +1,4 @@
-package com.rtr.api.application.dto;
+package com.rtr.api.application.dto.response;
 
 import java.util.Set;
 public class ProductDto {

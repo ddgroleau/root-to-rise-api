@@ -1,25 +1,24 @@
-package com.rtr.api.application.dto;
+package com.rtr.api.application.dto.response;
 
+import com.rtr.api.application.domain.model.Product;
 import com.sun.istack.NotNull;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-public class PropertyDto {
+public class TraitDto {
 
-    private Integer propertyId;
+    private Integer traitId;
 
     private String name;
 
     private String description;
 
-    public Integer getPropertyId() {
-        return propertyId;
+    public Integer getTraitId() {
+        return traitId;
     }
 
-    public void setPropertyId(Integer propertyId) {
-        this.propertyId = propertyId;
+    public void setTraitId(Integer traitId) {
+        this.traitId = traitId;
     }
 
     public String getName() {
