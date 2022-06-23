@@ -1,14 +1,14 @@
 package com.rtr.api.api.controller;
 
-import com.rtr.api.application.dto.request.AllIngredientsQuery;
-import com.rtr.api.application.dto.request.AllProductsQuery;
-import com.rtr.api.application.dto.request.AllPropertiesQuery;
-import com.rtr.api.application.dto.request.AllTraitsQuery;
-import com.rtr.api.application.dto.response.PropertyDto;
-import com.rtr.api.application.dto.response.TraitDto;
+import com.rtr.api.application.event.query.AllIngredientsQuery;
+import com.rtr.api.application.event.query.AllProductsQuery;
+import com.rtr.api.application.event.query.AllPropertiesQuery;
+import com.rtr.api.application.event.query.AllTraitsQuery;
+import com.rtr.api.application.dto.PropertyDto;
+import com.rtr.api.application.dto.TraitDto;
 import com.rtr.api.api.service.abstraction.ServiceMediator;
-import com.rtr.api.application.dto.response.IngredientDto;
-import com.rtr.api.application.dto.response.ProductDto;
+import com.rtr.api.application.dto.IngredientDto;
+import com.rtr.api.application.dto.ProductDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.ArrayList;
 
 @RestController
@@ -37,7 +36,7 @@ public class ProductController {
     public Iterable<ProductDto> getAllProducts() {
         Iterable<ProductDto> productDtos = new ArrayList<ProductDto>();
         try {
-            productDtos = (Iterable<ProductDto>) mediator.handleQuery(new AllProductsQuery());
+            productDtos = (Iterable<ProductDto>) mediator.handleQuery(AllProductsQuery.getInstance());
         } catch(Exception e) {
             logger.error(e.getMessage());
         } finally {

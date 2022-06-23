@@ -1,14 +1,14 @@
 package mock;
 
-import com.rtr.api.application.dto.request.AllIngredientsQuery;
-import com.rtr.api.application.dto.request.AllProductsQuery;
-import com.rtr.api.application.dto.request.AllPropertiesQuery;
-import com.rtr.api.application.dto.request.AllTraitsQuery;
-import com.rtr.api.application.dto.response.IngredientDto;
-import com.rtr.api.application.dto.response.PropertyDto;
-import com.rtr.api.application.dto.response.TraitDto;
+import com.rtr.api.application.event.query.AllIngredientsQuery;
+import com.rtr.api.application.event.query.AllProductsQuery;
+import com.rtr.api.application.event.query.AllPropertiesQuery;
+import com.rtr.api.application.event.query.AllTraitsQuery;
+import com.rtr.api.application.dto.IngredientDto;
+import com.rtr.api.application.dto.PropertyDto;
+import com.rtr.api.application.dto.TraitDto;
 import com.rtr.api.api.service.abstraction.ServiceMediator;
-import com.rtr.api.application.dto.response.ProductDto;
+import com.rtr.api.application.dto.ProductDto;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;

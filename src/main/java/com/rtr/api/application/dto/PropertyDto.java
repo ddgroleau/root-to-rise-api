@@ -1,24 +1,19 @@
-package com.rtr.api.application.dto.response;
+package com.rtr.api.application.dto;
 
-import com.rtr.api.application.domain.model.Product;
-import com.sun.istack.NotNull;
+public class PropertyDto {
 
-import javax.persistence.*;
-
-public class TraitDto {
-
-    private Integer traitId;
+    private Integer propertyId;
 
     private String name;
 
     private String description;
 
-    public Integer getTraitId() {
-        return traitId;
+    public Integer getPropertyId() {
+        return propertyId;
     }
 
-    public void setTraitId(Integer traitId) {
-        this.traitId = traitId;
+    public void setPropertyId(Integer propertyId) {
+        this.propertyId = propertyId;
     }
 
     public String getName() {

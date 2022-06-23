@@ -1,9 +1,4 @@
-package com.rtr.api.application.dto.response;
-
-import com.rtr.api.application.domain.model.Product;
-import com.sun.istack.NotNull;
-
-import javax.persistence.*;
+package com.rtr.api.application.dto;
 
 public class IngredientDto {
 

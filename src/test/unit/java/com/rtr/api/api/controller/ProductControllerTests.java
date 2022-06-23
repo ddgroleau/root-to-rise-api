@@ -1,9 +1,9 @@
 package com.rtr.api.api.controller;
 
-import com.rtr.api.application.dto.response.IngredientDto;
-import com.rtr.api.application.dto.response.ProductDto;
-import com.rtr.api.application.dto.response.PropertyDto;
-import com.rtr.api.application.dto.response.TraitDto;
+import com.rtr.api.application.dto.IngredientDto;
+import com.rtr.api.application.dto.ProductDto;
+import com.rtr.api.application.dto.PropertyDto;
+import com.rtr.api.application.dto.TraitDto;
 import mock.MockProductService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
