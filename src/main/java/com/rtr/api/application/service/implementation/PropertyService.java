@@ -1,5 +1,6 @@
 package com.rtr.api.application.service.implementation;
 
+import com.rtr.api.application.event.query.AllPropertiesQuery;
 import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.domain.model.Property;
 import com.rtr.api.application.event.command.Command;
@@ -26,7 +27,7 @@ public class PropertyService implements ServiceMediator {
     }
 
     public Object handleQuery(Query query) {
-        if(query instanceof AllProductsQuery) return this.getAllProperties();
+        if(query instanceof AllPropertiesQuery) return this.getAllProperties();
         throw new InvalidParameterException("Parameter request does not map to a service method.");
     }
 
