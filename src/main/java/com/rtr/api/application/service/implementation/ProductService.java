@@ -1,6 +1,6 @@
 package com.rtr.api.application.service.implementation;
 
-import com.rtr.api.api.service.abstraction.ServiceMediator;
+import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.domain.model.Product;
 import com.rtr.api.application.event.command.Command;
 import com.rtr.api.application.event.query.AllProductsQuery;
@@ -15,8 +15,7 @@ import org.springframework.stereotype.Service;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-@Service
-@Qualifier("product")
+@Service("product")
 public class ProductService implements ServiceMediator {
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;

@@ -6,7 +6,7 @@ import com.rtr.api.application.event.query.AllPropertiesQuery;
 import com.rtr.api.application.event.query.AllTraitsQuery;
 import com.rtr.api.application.dto.PropertyDto;
 import com.rtr.api.application.dto.TraitDto;
-import com.rtr.api.api.service.abstraction.ServiceMediator;
+import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.dto.IngredientDto;
 import com.rtr.api.application.dto.ProductDto;
 import org.slf4j.Logger;
@@ -21,13 +21,10 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-
-    @Autowired
-    @Qualifier("product")
     private final ServiceMediator mediator;
     private final Logger logger;
 
-    public ProductController(ServiceMediator mediator) {
+    public ProductController(@Qualifier("product") ServiceMediator mediator) {
         this.mediator = mediator;
         this.logger = LoggerFactory.getLogger(ProductController.class);
     }

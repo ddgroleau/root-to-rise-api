@@ -1,6 +1,6 @@
 package com.rtr.api.application.service.implementation;
 
-import com.rtr.api.api.service.abstraction.ServiceMediator;
+import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.domain.model.Ingredient;
 import com.rtr.api.application.event.command.Command;
 import com.rtr.api.application.event.query.AllIngredientsQuery;
@@ -14,8 +14,7 @@ import org.springframework.stereotype.Service;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-@Service
-@Qualifier("ingredient")
+@Service("ingredient")
 public class IngredientService implements ServiceMediator {
     private final IngredientRepository ingredientRepository;
     private final ModelMapper modelMapper;

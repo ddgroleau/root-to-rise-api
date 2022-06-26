@@ -1,9 +1,8 @@
 package com.rtr.api.api.controller;
 
-import com.rtr.api.api.service.abstraction.ServiceMediator;
+import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.event.query.AllTraitsQuery;
 import com.rtr.api.application.dto.TraitDto;
-import com.rtr.api.application.event.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +15,11 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/traits")
 public class TraitController {
-    @Autowired
-    @Qualifier("trait")
+
     private final ServiceMediator mediator;
     private final Logger logger;
 
-    public TraitController(ServiceMediator mediator) {
+    public TraitController( @Qualifier("trait")ServiceMediator mediator) {
         this.mediator = mediator;
         this.logger = LoggerFactory.getLogger(ProductController.class);
     }

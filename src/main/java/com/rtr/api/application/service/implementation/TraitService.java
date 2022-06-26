@@ -1,6 +1,6 @@
 package com.rtr.api.application.service.implementation;
 
-import com.rtr.api.api.service.abstraction.ServiceMediator;
+import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.domain.model.Trait;
 import com.rtr.api.application.event.command.Command;
 import com.rtr.api.application.event.query.AllTraitsQuery;
@@ -15,8 +15,7 @@ import org.springframework.stereotype.Service;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-@Service
-@Qualifier("trait")
+@Service("trait")
 public class TraitService implements ServiceMediator {
     private final TraitRepository traitRepository;
     private final ModelMapper modelMapper;

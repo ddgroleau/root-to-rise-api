@@ -1,6 +1,6 @@
 package com.rtr.api.api.controller;
 
-import com.rtr.api.api.service.abstraction.ServiceMediator;
+import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.event.query.AllPropertiesQuery;
 import com.rtr.api.application.dto.PropertyDto;
 import org.slf4j.Logger;
@@ -15,12 +15,10 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/properties")
 public class PropertyController {
-    @Autowired
-    @Qualifier("property")
     private final ServiceMediator mediator;
     private final Logger logger;
 
-    public PropertyController(ServiceMediator mediator) {
+    public PropertyController(@Qualifier("property") ServiceMediator mediator) {
         this.mediator = mediator;
         this.logger = LoggerFactory.getLogger(ProductController.class);
     }

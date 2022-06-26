@@ -1,6 +1,6 @@
 package com.rtr.api.api.controller;
 
-import com.rtr.api.api.service.abstraction.ServiceMediator;
+import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.event.query.AllIngredientsQuery;
 import com.rtr.api.application.dto.IngredientDto;
 import org.slf4j.Logger;
@@ -15,12 +15,10 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/ingredients")
 public class IngredientController {
-    @Autowired
-    @Qualifier("ingredient")
     private final ServiceMediator mediator;
     private final Logger logger;
 
-    public IngredientController(ServiceMediator mediator) {
+    public IngredientController(@Qualifier("ingredient") ServiceMediator mediator) {
         this.mediator = mediator;
         this.logger = LoggerFactory.getLogger(ProductController.class);
     }

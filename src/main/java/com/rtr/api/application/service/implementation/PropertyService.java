@@ -1,6 +1,6 @@
 package com.rtr.api.application.service.implementation;
 
-import com.rtr.api.api.service.abstraction.ServiceMediator;
+import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.domain.model.Property;
 import com.rtr.api.application.event.command.Command;
 import com.rtr.api.application.event.query.AllProductsQuery;
@@ -14,8 +14,7 @@ import org.springframework.stereotype.Service;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-@Service
-@Qualifier("property")
+@Service("property")
 public class PropertyService implements ServiceMediator {
     private final PropertyRepository propertyRepository;
     private final ModelMapper modelMapper;

@@ -1,4 +1,4 @@
-package com.rtr.api.api.service.abstraction;
+package com.rtr.api.application.service.abstraction;
 
 import com.rtr.api.application.event.command.Command;
 import com.rtr.api.application.event.query.Query;
