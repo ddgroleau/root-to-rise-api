@@ -1,7 +1,7 @@
 package com.rtr.api.api.controller;
 
 import com.rtr.api.application.service.abstraction.ServiceMediator;
-import com.rtr.api.application.event.query.DistinctPropertiesByNameQuery;
+import com.rtr.api.application.event.query.DistinctPropertyNamesQuery;
 import com.rtr.api.application.dto.PropertyDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,14 +23,14 @@ public class PropertyController {
     }
 
     @GetMapping("/names/distinct")
-    public Iterable<PropertyDto> getDistinctPropertiesByName() {
-        Iterable<PropertyDto> propertyDtos = new ArrayList<PropertyDto>();
+    public Iterable<String> getDistinctPropertyNames() {
+        Iterable<String> names = new ArrayList<String>();
         try {
-            propertyDtos = (Iterable<PropertyDto>) mediator.handleQuery(DistinctPropertiesByNameQuery.getInstance());
+            names = (Iterable<String>) mediator.handleQuery(DistinctPropertyNamesQuery.getInstance());
         } catch(Exception e) {
             logger.error(e.getMessage());
         } finally {
-            return propertyDtos;
+            return names;
         }
     }
 

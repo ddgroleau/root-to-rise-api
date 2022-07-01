@@ -1,9 +1,9 @@
 package com.rtr.api.api.controller;
 
-import com.rtr.api.application.event.query.DistinctIngredientsByNameQuery;
+import com.rtr.api.application.event.query.DistinctIngredientNamesQuery;
 import com.rtr.api.application.event.query.AllProductsQuery;
-import com.rtr.api.application.event.query.DistinctPropertiesByNameQuery;
-import com.rtr.api.application.event.query.DistinctTraitsByNameQuery;
+import com.rtr.api.application.event.query.DistinctPropertyNamesQuery;
+import com.rtr.api.application.event.query.DistinctTraitNamesQuery;
 import com.rtr.api.application.dto.PropertyDto;
 import com.rtr.api.application.dto.TraitDto;
 import com.rtr.api.application.service.abstraction.ServiceMediator;
@@ -44,7 +44,7 @@ public class ProductController {
     public Iterable<IngredientDto> getAllIngredients() {
         Iterable<IngredientDto> ingredientDtos = new ArrayList<IngredientDto>();
         try {
-            ingredientDtos = (Iterable<IngredientDto>) mediator.handleQuery(new DistinctIngredientsByNameQuery());
+            ingredientDtos = (Iterable<IngredientDto>) mediator.handleQuery(new DistinctIngredientNamesQuery());
         } catch(Exception e) {
             logger.error(e.getMessage());
         } finally {
@@ -56,7 +56,7 @@ public class ProductController {
     public Iterable<PropertyDto> getAllProperties() {
         Iterable<PropertyDto> propertyDtos = new ArrayList<PropertyDto>();
         try {
-            propertyDtos = (Iterable<PropertyDto>) mediator.handleQuery(new DistinctPropertiesByNameQuery());
+            propertyDtos = (Iterable<PropertyDto>) mediator.handleQuery(new DistinctPropertyNamesQuery());
         } catch(Exception e) {
             logger.error(e.getMessage());
         } finally {
@@ -68,7 +68,7 @@ public class ProductController {
     public Iterable<TraitDto> getAllTraits() {
         Iterable<TraitDto> traitDtos = new ArrayList<TraitDto>();
         try {
-            traitDtos = (Iterable<TraitDto>) mediator.handleQuery(new DistinctTraitsByNameQuery());
+            traitDtos = (Iterable<TraitDto>) mediator.handleQuery(new DistinctTraitNamesQuery());
         } catch(Exception e) {
             logger.error(e.getMessage());
         } finally {

@@ -22,10 +22,10 @@ public class PropertyControllerTests {
     }
 
     @Test
-    void getDistinctPropertiesByName_ReturnsPropertyDtoIterable() {
-        Iterable<PropertyDto> propertyDtos = propertyController.getDistinctPropertiesByName();
-        assertThat(propertyDtos instanceof  Iterable<PropertyDto>);
-        assertThat(((ArrayList<PropertyDto>)propertyDtos).get(0).getName().equals("Test PropertyDto"));
+    void getDistinctPropertyNames_ReturnsPropertyDtoIterable() {
+        Iterable<String> names = propertyController.getDistinctPropertyNames();
+        assertThat(names instanceof  Iterable<String>);
+        assertThat(((ArrayList<String>)names).get(0).equals("Test PropertyDto"));
     }
 
 }

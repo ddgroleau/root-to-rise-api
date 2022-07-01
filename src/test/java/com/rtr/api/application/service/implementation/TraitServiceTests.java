@@ -2,7 +2,7 @@ package com.rtr.api.application.service.implementation;
 
 import com.rtr.api.application.domain.model.Trait;
 import com.rtr.api.application.dto.TraitDto;
-import com.rtr.api.application.event.query.DistinctTraitsByNameQuery;
+import com.rtr.api.application.event.query.DistinctTraitNamesQuery;
 import com.rtr.api.application.repository.abstraction.TraitRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -57,8 +57,8 @@ public class TraitServiceTests {
         }};
         when(traitRepository.findAll()).thenReturn(mockTraits);
 
-        List<TraitDto> traitDtos = (List<TraitDto>) traitService.handleQuery(new DistinctTraitsByNameQuery());
-        assertThat(traitDtos instanceof  Iterable<TraitDto>);
-        assertTrue(traitDtos.size() == 3);
+        List<String> names = (List<String>) traitService.handleQuery(new DistinctTraitNamesQuery());
+        assertThat(names instanceof  Iterable<String>);
+        assertTrue(names.size() == 3);
     }
 }

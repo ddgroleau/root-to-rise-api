@@ -22,9 +22,9 @@ public class TraitControllerTests {
     }
 
     @Test
-    void getDistinctTraitsByName_ReturnsTraitDtoIterable() {
-        Iterable<TraitDto> traitDtos = traitController.getDistinctTraitsByName();
-        assertThat(traitDtos instanceof  Iterable<TraitDto>);
-        assertThat(((ArrayList<TraitDto>)traitDtos).get(0).getName().equals("Test TraitDto"));
+    void getDistinctTraitNames_ReturnsTraitDtoIterable() {
+        Iterable<String> names = traitController.getDistinctTraitNames();
+        assertThat(names instanceof  Iterable<String>);
+        assertThat(((ArrayList<String>)names).get(0).equals("Test TraitDto"));
     }
 }

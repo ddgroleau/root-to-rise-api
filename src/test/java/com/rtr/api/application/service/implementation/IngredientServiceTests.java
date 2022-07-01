@@ -2,7 +2,7 @@ package com.rtr.api.application.service.implementation;
 
 import com.rtr.api.application.domain.model.Ingredient;
 import com.rtr.api.application.dto.IngredientDto;
-import com.rtr.api.application.event.query.DistinctIngredientsByNameQuery;
+import com.rtr.api.application.event.query.DistinctIngredientNamesQuery;
 import com.rtr.api.application.repository.abstraction.IngredientRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -54,8 +54,8 @@ public class IngredientServiceTests {
         }};
         when(ingredientRepository.findAll()).thenReturn(mockIngredients);
 
-        List<IngredientDto> ingredientDtos = (List<IngredientDto>) ingredientService.handleQuery(new DistinctIngredientsByNameQuery());
-        assertThat(ingredientDtos instanceof  Iterable<IngredientDto>);
-        assertTrue(ingredientDtos.size() == 2);
+        List<String> names = (List<String>) ingredientService.handleQuery(new DistinctIngredientNamesQuery());
+        assertThat(names instanceof  Iterable<String>);
+        assertTrue(names.size() == 2);
     }
 }

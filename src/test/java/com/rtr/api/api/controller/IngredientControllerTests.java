@@ -20,10 +20,10 @@ public class IngredientControllerTests {
     }
 
     @Test
-    void getDistinctIngredientsByName_ReturnsIngredientDtoIterable() {
-        Iterable<IngredientDto> ingredientDtos = ingredientController.getDistinctIngredientsByName();
-        assertThat(ingredientDtos instanceof  Iterable<IngredientDto>);
-        assertThat(((ArrayList<IngredientDto>)ingredientDtos).get(0).getName().equals("Test IngredientDto"));
+    void getDistinctIngredientNames_ReturnsIngredientDtoIterable() {
+        Iterable<String> names = ingredientController.getDistinctIngredientNames();
+        assertThat(names instanceof  Iterable<String>);
+        assertThat(((ArrayList<String>)names).get(0).equals("Test IngredientDto"));
     }
 
 }

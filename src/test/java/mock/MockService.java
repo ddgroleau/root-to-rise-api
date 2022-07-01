@@ -14,12 +14,12 @@ public class MockService implements ServiceMediator {
     public Object handleQuery(Query query) {
         if(query instanceof AllProductsQuery)
             return new ArrayList<ProductDto>(){{add(new ProductDto(){{setName("Test ProductDto");}});}};
-        if(query instanceof DistinctIngredientsByNameQuery)
-            return new ArrayList<IngredientDto>(){{add(new IngredientDto(){{setName("Test IngredientDto");}});}};
-        if(query instanceof DistinctPropertiesByNameQuery)
-            return new ArrayList<PropertyDto>(){{add(new PropertyDto(){{setName("Test PropertyDto");}});}};
-        if(query instanceof DistinctTraitsByNameQuery)
-            return new ArrayList<TraitDto>(){{add(new TraitDto(){{setName("Test TraitDto");}});}};
+        if(query instanceof DistinctIngredientNamesQuery)
+            return new ArrayList<String>(){{add("TestIngredientDto");}};
+        if(query instanceof DistinctPropertyNamesQuery)
+            return new ArrayList<String>(){{add("PropertyDto");}};
+        if(query instanceof DistinctTraitNamesQuery)
+            return new ArrayList<String>(){{add("TraitDto");}};
         throw new InvalidParameterException("Parameter request does not map to a service method.");
     }
 

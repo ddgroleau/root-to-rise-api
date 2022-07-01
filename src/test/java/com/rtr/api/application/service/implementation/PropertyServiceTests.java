@@ -2,7 +2,7 @@ package com.rtr.api.application.service.implementation;
 
 import com.rtr.api.application.domain.model.Property;
 import com.rtr.api.application.dto.PropertyDto;
-import com.rtr.api.application.event.query.DistinctPropertiesByNameQuery;
+import com.rtr.api.application.event.query.DistinctPropertyNamesQuery;
 import com.rtr.api.application.repository.abstraction.PropertyRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -54,8 +54,8 @@ public class PropertyServiceTests {
         }};
         when(propertyRepository.findAll()).thenReturn(mockProperties);
 
-        List<PropertyDto> propertyDtos = (List<PropertyDto>) propertyService.handleQuery(new DistinctPropertiesByNameQuery());
-        assertThat(propertyDtos instanceof  Iterable<PropertyDto>);
-        assertTrue(propertyDtos.size() == 2);
+        List<String> names = (List<String>) propertyService.handleQuery(new DistinctPropertyNamesQuery());
+        assertThat(names instanceof  Iterable<String>);
+        assertTrue(names.size() == 2);
     }
 }

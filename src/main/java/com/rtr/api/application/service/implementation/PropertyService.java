@@ -1,6 +1,7 @@
 package com.rtr.api.application.service.implementation;
 
-import com.rtr.api.application.event.query.DistinctPropertiesByNameQuery;
+import com.rtr.api.application.domain.model.Ingredient;
+import com.rtr.api.application.event.query.DistinctPropertyNamesQuery;
 import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.domain.model.Property;
 import com.rtr.api.application.event.command.Command;
@@ -13,6 +14,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Service;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service("property")
 public class PropertyService implements ServiceMediator {
@@ -26,25 +28,20 @@ public class PropertyService implements ServiceMediator {
     }
 
     public Object handleQuery(Query query) {
-        if(query instanceof DistinctPropertiesByNameQuery) return this.getDistinctPropertiesByName();
+        if(query instanceof DistinctPropertyNamesQuery) return this.getDistinctPropertiesByName();
         throw new InvalidParameterException("Parameter request does not map to a service method.");
     }
 
     public void handleCommand(Command command) {
         throw new InvalidParameterException("Parameter request does not map to a service method.");
     }
-    private Iterable<PropertyDto> getDistinctPropertiesByName() {
+    private Iterable<String> getDistinctPropertiesByName() {
         Iterable<Property> properties = propertyRepository.findAll();
-        ArrayList<PropertyDto> propertyDtos = new ArrayList<PropertyDto>();
-
-        for (Property property: properties) {
-            PropertyDto propertyDto = modelMapper.map(property,PropertyDto.class);
-            propertyDtos.add(propertyDto);
-        }
-
-        return CollectionIterator.distinctByKey(
-                propertyDtos.stream(),
-                property -> ((PropertyDto)property).getName()
-        ).toList();
+        return ((List<Property>) properties)
+                .stream()
+                .map(Property::getName)
+                .sorted()
+                .distinct()
+                .toList();
     }
 }
