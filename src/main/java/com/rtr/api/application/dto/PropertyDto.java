@@ -1,5 +1,7 @@
 package com.rtr.api.application.dto;
 
+import java.util.Objects;
+
 public class PropertyDto {
 
     private Integer propertyId;
@@ -7,6 +9,12 @@ public class PropertyDto {
     private String name;
 
     private String description;
+
+    @Override
+    public boolean equals(Object basis) {
+        if (basis == null || this.getClass() != basis.getClass()) return false;
+        return this == basis || Objects.equals(name, ((PropertyDto)basis).name);
+    }
 
     public Integer getPropertyId() {
         return propertyId;

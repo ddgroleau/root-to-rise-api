@@ -1,11 +1,10 @@
 package com.rtr.api.api.controller;
 
 import com.rtr.api.application.service.abstraction.ServiceMediator;
-import com.rtr.api.application.event.query.AllTraitsQuery;
+import com.rtr.api.application.event.query.DistinctTraitsByNameQuery;
 import com.rtr.api.application.dto.TraitDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +20,14 @@ public class TraitController {
 
     public TraitController( @Qualifier("trait")ServiceMediator mediator) {
         this.mediator = mediator;
-        this.logger = LoggerFactory.getLogger(ProductController.class);
+        this.logger = LoggerFactory.getLogger(TraitController.class);
     }
 
-    @GetMapping("/all")
-    public Iterable<TraitDto> getAllTraits() {
+    @GetMapping("/names/distinct")
+    public Iterable<TraitDto> getDistinctTraitsByName() {
         Iterable<TraitDto> traitDtos = new ArrayList<TraitDto>();
         try {
-            traitDtos = (Iterable<TraitDto>) mediator.handleQuery(AllTraitsQuery.getInstance());
+            traitDtos = (Iterable<TraitDto>) mediator.handleQuery(DistinctTraitsByNameQuery.getInstance());
         } catch(Exception e) {
             logger.error(e.getMessage());
         } finally {

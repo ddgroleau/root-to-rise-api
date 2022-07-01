@@ -1,5 +1,7 @@
 package com.rtr.api.application.dto;
 
+import java.util.Objects;
+
 public class IngredientDto {
 
     private Integer ingredientId;
@@ -71,4 +73,5 @@ public class IngredientDto {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
 }
