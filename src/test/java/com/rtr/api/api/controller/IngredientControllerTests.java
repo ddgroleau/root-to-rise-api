@@ -8,6 +8,8 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -22,8 +24,8 @@ public class IngredientControllerTests {
     @Test
     void getDistinctIngredientNames_ReturnsIngredientDtoIterable() {
         Iterable<String> names = ingredientController.getDistinctIngredientNames();
-        assertThat(names instanceof  Iterable<String>);
-        assertThat(((ArrayList<String>)names).get(0).equals("Test IngredientDto"));
+        assertNotNull(names);
+        assertEquals("Test IngredientDto",((ArrayList<String>)names).get(0));
     }
 
 }

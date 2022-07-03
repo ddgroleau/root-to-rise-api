@@ -1,9 +1,6 @@
 package com.rtr.api.api.controller;
 
-import com.rtr.api.application.event.query.DistinctIngredientNamesQuery;
-import com.rtr.api.application.event.query.AllProductsQuery;
-import com.rtr.api.application.event.query.DistinctPropertyNamesQuery;
-import com.rtr.api.application.event.query.DistinctTraitNamesQuery;
+import com.rtr.api.application.event.query.*;
 import com.rtr.api.application.dto.PropertyDto;
 import com.rtr.api.application.dto.TraitDto;
 import com.rtr.api.application.service.abstraction.ServiceMediator;
@@ -12,10 +9,14 @@ import com.rtr.api.application.dto.ProductDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/products")
@@ -40,40 +41,19 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/ingredients")
-    public Iterable<IngredientDto> getAllIngredients() {
-        Iterable<IngredientDto> ingredientDtos = new ArrayList<IngredientDto>();
+    @GetMapping("/{productId}")
+    public ResponseEntity<ProductDto> getProductById(@PathVariable int productId) {
         try {
-            ingredientDtos = (Iterable<IngredientDto>) mediator.handleQuery(new DistinctIngredientNamesQuery());
+            return new ResponseEntity<>((ProductDto) mediator.handleQuery(new ProductByIdQuery(productId)), HttpStatus.OK);
+        } catch(NoSuchElementException e) {
+            logger.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch(Exception e) {
             logger.error(e.getMessage());
-        } finally {
-            return ingredientDtos;
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    @GetMapping("/properties")
-    public Iterable<PropertyDto> getAllProperties() {
-        Iterable<PropertyDto> propertyDtos = new ArrayList<PropertyDto>();
-        try {
-            propertyDtos = (Iterable<PropertyDto>) mediator.handleQuery(new DistinctPropertyNamesQuery());
-        } catch(Exception e) {
-            logger.error(e.getMessage());
-        } finally {
-            return propertyDtos;
-        }
-    }
 
-    @GetMapping("/traits")
-    public Iterable<TraitDto> getAllTraits() {
-        Iterable<TraitDto> traitDtos = new ArrayList<TraitDto>();
-        try {
-            traitDtos = (Iterable<TraitDto>) mediator.handleQuery(new DistinctTraitNamesQuery());
-        } catch(Exception e) {
-            logger.error(e.getMessage());
-        } finally {
-            return traitDtos;
-        }
-    }
 
 }
