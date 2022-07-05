@@ -33,7 +33,7 @@ public class TraitServiceTests {
     void handleQuery_withInvalidParameter_throwsInvalidParameterException() {
         InvalidParameterException exception =
                 assertThrows(InvalidParameterException.class,()->traitService.handleQuery(null));
-        assertThat(exception.getMessage().equals("Parameter request does not map to a service method."));
+        assertEquals("Parameter request does not map to a service method.",exception.getMessage());
     }
     @Test
     void handleQuery_withDistinctTraitsQuery_ReturnsUniqueTraitDtos() {
@@ -58,7 +58,7 @@ public class TraitServiceTests {
         when(traitRepository.findAll()).thenReturn(mockTraits);
 
         List<String> names = (List<String>) traitService.handleQuery(new DistinctTraitNamesQuery());
-        assertThat(names instanceof  Iterable<String>);
-        assertTrue(names.size() == 3);
+        assertNotNull(names);
+        assertEquals(3, names.size());
     }
 }

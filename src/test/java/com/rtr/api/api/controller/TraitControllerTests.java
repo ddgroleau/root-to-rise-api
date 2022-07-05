@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -24,7 +25,7 @@ public class TraitControllerTests {
     @Test
     void getDistinctTraitNames_ReturnsTraitDtoIterable() {
         Iterable<String> names = traitController.getDistinctTraitNames();
-        assertThat(names instanceof  Iterable<String>);
-        assertThat(((ArrayList<String>)names).get(0).equals("Test TraitDto"));
+        assertNotNull(names);
+        assertEquals("Test TraitDto", ((ArrayList<String>) names).get(0));
     }
 }

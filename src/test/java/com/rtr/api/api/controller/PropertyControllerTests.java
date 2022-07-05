@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -24,8 +25,8 @@ public class PropertyControllerTests {
     @Test
     void getDistinctPropertyNames_ReturnsPropertyDtoIterable() {
         Iterable<String> names = propertyController.getDistinctPropertyNames();
-        assertThat(names instanceof  Iterable<String>);
-        assertThat(((ArrayList<String>)names).get(0).equals("Test PropertyDto"));
+        assertNotNull(names);
+        assertEquals("Test PropertyDto", ((ArrayList<String>) names).get(0));
     }
 
 }
