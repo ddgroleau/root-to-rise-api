@@ -1,10 +1,7 @@
 package com.rtr.api.api.controller;
 
 import com.rtr.api.application.event.query.*;
-import com.rtr.api.application.dto.PropertyDto;
-import com.rtr.api.application.dto.TraitDto;
 import com.rtr.api.application.service.abstraction.ServiceMediator;
-import com.rtr.api.application.dto.IngredientDto;
 import com.rtr.api.application.dto.ProductDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
