@@ -1,7 +1,6 @@
 package com.rtr.api.application.service.implementation;
 
 import com.rtr.api.application.domain.model.Trait;
-import com.rtr.api.application.dto.TraitDto;
 import com.rtr.api.application.event.query.DistinctTraitNamesQuery;
 import com.rtr.api.application.repository.abstraction.TraitRepository;
 import org.junit.jupiter.api.BeforeAll;

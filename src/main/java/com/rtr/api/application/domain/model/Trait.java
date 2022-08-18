@@ -13,7 +13,7 @@ public class Trait {
     private Product product;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="trait_id")
     private Integer traitId;
 
