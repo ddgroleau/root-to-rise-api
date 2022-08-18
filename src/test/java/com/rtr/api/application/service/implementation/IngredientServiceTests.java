@@ -1,7 +1,6 @@
 package com.rtr.api.application.service.implementation;
 
 import com.rtr.api.application.domain.model.Ingredient;
-import com.rtr.api.application.dto.IngredientDto;
 import com.rtr.api.application.event.query.DistinctIngredientNamesQuery;
 import com.rtr.api.application.repository.abstraction.IngredientRepository;
 import org.junit.jupiter.api.BeforeAll;

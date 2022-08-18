@@ -1,7 +1,6 @@
 package com.rtr.api.application.service.implementation;
 
 import com.rtr.api.application.domain.model.Property;
-import com.rtr.api.application.dto.PropertyDto;
 import com.rtr.api.application.event.query.DistinctPropertyNamesQuery;
 import com.rtr.api.application.repository.abstraction.PropertyRepository;
 import org.junit.jupiter.api.BeforeAll;

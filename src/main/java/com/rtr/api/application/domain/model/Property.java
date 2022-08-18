@@ -12,7 +12,7 @@ public class Property {
     private Product product;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="property_id")
     private Integer propertyId;
 

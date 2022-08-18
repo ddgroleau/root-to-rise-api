@@ -1,123 +1,148 @@
--- Table: public.products
-
-DROP TABLE IF EXISTS public.products CASCADE;
-
-CREATE TABLE IF NOT EXISTS public.products
-(
-    product_id serial,
-    name character varying(255) COLLATE pg_catalog."default",
-    type character varying(255) COLLATE pg_catalog."default",
-    value_proposition character varying(255) COLLATE pg_catalog."default",
-    description character varying(255) COLLATE pg_catalog."default",
-    use_cases character varying(255) COLLATE pg_catalog."default",
-    disclaimer character varying(255) COLLATE pg_catalog."default",
-    image_path character varying(255) COLLATE pg_catalog."default",
-    instructions character varying(255) COLLATE pg_catalog."default",
-    price double precision,
-    stock_quantity integer,
-    measurement_size double precision,
-    measurement_unit character varying(255) COLLATE pg_catalog."default",
-    created_by character varying(255) COLLATE pg_catalog."default",
-    created_on timestamp without time zone,
-    updated_by character varying(255) COLLATE pg_catalog."default",
-    updated_on timestamp without time zone,
-    CONSTRAINT products_pkey PRIMARY KEY (product_id)
-)
-
-TABLESPACE pg_default;
-
--- ALTER TABLE IF EXISTS public.products
---     OWNER to root;
-
--- Table: public.ingredients
-
-DROP TABLE IF EXISTS public.ingredients CASCADE;
-
-CREATE TABLE IF NOT EXISTS public.ingredients
-(
-    ingredient_id serial,
-    product_id integer NOT NULL,
-    name character varying(255) COLLATE pg_catalog."default",
-    alternate_name character varying(255) COLLATE pg_catalog."default",
-    type character varying(255) COLLATE pg_catalog."default",
-    description character varying(255) COLLATE pg_catalog."default",
-    display_order integer,
-    image_path character varying(255) COLLATE pg_catalog."default",
-    created_by character varying(255) COLLATE pg_catalog."default",
-    created_on timestamp without time zone,
-    updated_by character varying(255) COLLATE pg_catalog."default",
-    updated_on timestamp without time zone,
-    CONSTRAINT ingredients_pkey PRIMARY KEY (ingredient_id),
-    CONSTRAINT fk34jbb91wprx6ys2443vf43cxj FOREIGN KEY (product_id)
-        REFERENCES public.products (product_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-)
-
-TABLESPACE pg_default;
-
--- ALTER TABLE IF EXISTS public.ingredients
---     OWNER to root;
-
--- Table: public.properties
-
-DROP TABLE IF EXISTS public.properties CASCADE;
-
-CREATE TABLE IF NOT EXISTS public.properties
-(
-    property_id serial,
-    product_id integer NOT NULL,
-    name character varying(255) COLLATE pg_catalog."default",
-    description character varying(255) COLLATE pg_catalog."default",
-    created_by character varying(255) COLLATE pg_catalog."default",
-    created_on timestamp without time zone,
-    updated_by character varying(255) COLLATE pg_catalog."default",
-    updated_on timestamp without time zone,
-    CONSTRAINT properties_pkey PRIMARY KEY (property_id),
-    CONSTRAINT fkqbtxtswifwbjcu98cciemunyf FOREIGN KEY (product_id)
-        REFERENCES public.products (product_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-)
-
-TABLESPACE pg_default;
-
--- ALTER TABLE IF EXISTS public.properties
---     OWNER to root;
-
--- Table: public.traits
-
-DROP TABLE IF EXISTS public.traits CASCADE;
-
-CREATE TABLE IF NOT EXISTS public.traits
-(
-    trait_id serial,
-    product_id integer NOT NULL,
-    name character varying(255) COLLATE pg_catalog."default",
-    description character varying(255) COLLATE pg_catalog."default",
-    created_by character varying(255) COLLATE pg_catalog."default",
-    created_on timestamp without time zone,
-    updated_by character varying(255) COLLATE pg_catalog."default",
-    updated_on timestamp without time zone,
-    CONSTRAINT traits_pkey PRIMARY KEY (trait_id),
-    CONSTRAINT fktn7xqowg13qfdcsedjg6bpate FOREIGN KEY (product_id)
-        REFERENCES public.products (product_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-)
-
-TABLESPACE pg_default;
-
--- ALTER TABLE IF EXISTS public.traits
---     OWNER to root;
-
-
 -- STORED PROCS
 
--- PROCEDURE: public.insert_property(character varying, character varying)
-DROP PROCEDURE IF EXISTS public.insert_property(character varying, character varying);
+-- PROCEDURE: public.insert_product
+drop procedure IF EXISTS public.insert_product(
+character varying,
+character varying,
+character varying,
+character varying,
+double precision,
+character varying,
+character varying,
+double precision,
+integer,
+character varying,
+character varying,
+character varying
+);
 
-CREATE OR REPLACE PROCEDURE public.insert_property(IN property_name character varying,IN product_name character varying)
+create or replace procedure public.insert_product(
+    IN description character varying,
+    IN disclaimer character varying,
+    IN image_path character varying,
+    IN instructions character varying,
+    IN measurement_size double precision,
+    IN measurement_unit character varying,
+    IN name character varying,
+    IN price double precision,
+    IN stock_quantity integer,
+    IN type character varying,
+    IN use_cases character varying,
+    IN value_proposition character varying
+    )
+LANGUAGE plpgsql
+AS '
+BEGIN
+INSERT INTO public.products(
+    created_by,
+    created_on,
+    description,
+    disclaimer,
+    image_path,
+    instructions,
+    measurement_size,
+    measurement_unit,
+    name,
+    price,
+    stock_quantity,
+    type,
+    updated_by,
+    updated_on,
+    use_cases,
+    value_proposition
+    )
+	VALUES (
+        ''root'', -- created_by
+        CURRENT_DATE, --created_on
+        description, --description
+        disclaimer, --disclaimer
+        image_path, --image_path
+        instructions, --instructions
+        measurement_size, --measurement_size
+        measurement_unit, --measurement_unit
+        name, --name
+        price, --price
+        stock_quantity, --stock_quantity
+        type, --type
+        ''root'', --updated_by
+        CURRENT_DATE, --updated_on
+        use_cases, --use_cases
+        value_proposition --value_proposition
+    );
+END
+';
+-- ALTER PROCEDURE public.insert_product(
+--    IN description character varying,
+--    IN disclaimer character varying,
+--    IN image_path character varying,
+--    IN instructions character varying,
+--    IN measurement_size double precision,
+--    IN measurement_unit character varying,
+--    IN name character varying,
+--    IN price double precision,
+--    IN stock_quantity integer,
+--    IN type character varying,
+--    IN use_cases character varying,
+--    IN value_proposition character varying
+--    )
+--     OWNER TO root;
+
+-- PROCEDURE: public.insert_ingredient
+drop procedure IF EXISTS public.insert_ingredient(
+character varying,
+character varying,
+character varying,
+character varying,
+character varying,
+integer,
+character varying
+);
+
+create or replace procedure public.insert_ingredient(
+    IN product_name character varying,
+    IN ingredient_name character varying,
+    IN alternate_name character varying,
+    IN type character varying,
+    IN description character varying,
+    IN display_order integer,
+    IN image_path character varying
+)
+LANGUAGE plpgsql
+AS '
+BEGIN
+INSERT INTO public.ingredients(
+	product_id, name, alternate_name, type, description, display_order, image_path, created_by, created_on, updated_by, updated_on)
+VALUES
+(
+    (SELECT product_id from public.products WHERE name = product_name LIMIT 1), --product_id
+    ingredient_name, --name
+    alternate_name, --alternate_name
+    type, --type
+    description, --description
+    display_order, --display_order
+    image_path, --image_path
+    ''root'', --created_by
+    CURRENT_DATE, --created_on
+    ''root'', --updated_by
+    CURRENT_DATE --updated_on
+);
+END
+';
+-- ALTER PROCEDURE public.insert_ingredient(
+--    IN product_name character varying,
+--    IN ingredient_name character varying,
+--    IN alternate_name character varying,
+--    IN type character varying,
+--    IN description character varying,
+--    IN display_order integer,
+--    IN image_path character varying
+--)
+--     OWNER TO root;
+
+-- PROCEDURE: public.insert_property(character varying, character varying)
+DROP procedure IF EXISTS public.insert_property(character varying, character varying);
+
+create or replace procedure public.insert_property(IN property_name character varying,IN product_name character varying)
 LANGUAGE plpgsql
 AS '
 BEGIN
@@ -139,9 +164,9 @@ END
 
 -- PROCEDURE: public.insert_property(character varying, character varying)
 
-DROP PROCEDURE IF EXISTS public.insert_trait(character varying, character varying);
+DROP procedure IF EXISTS public.insert_trait(character varying, character varying);
 
-CREATE OR REPLACE PROCEDURE public.insert_trait(IN trait_name character varying,IN product_name character varying)
+create or replace procedure public.insert_trait(IN trait_name character varying,IN product_name character varying)
 LANGUAGE plpgsql
 AS '
 BEGIN

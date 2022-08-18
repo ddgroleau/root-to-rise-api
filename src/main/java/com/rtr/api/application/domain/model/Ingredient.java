@@ -12,7 +12,7 @@ public class Ingredient {
     private Product product;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ingredient_id")
     private Integer ingredientId;
 

@@ -1,20 +1,16 @@
 package com.rtr.api.application.service.implementation;
 
-import com.rtr.api.application.domain.model.Property;
 import com.rtr.api.application.service.abstraction.ServiceMediator;
 import com.rtr.api.application.domain.model.Trait;
 import com.rtr.api.application.event.command.Command;
 import com.rtr.api.application.event.query.DistinctTraitNamesQuery;
-import com.rtr.api.application.dto.TraitDto;
 import com.rtr.api.application.event.query.Query;
 import com.rtr.api.application.repository.abstraction.TraitRepository;
-import com.rtr.api.application.utility.CollectionIterator;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service("trait")
